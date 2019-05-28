@@ -120,7 +120,9 @@ class NavBar extends React.Component {
               noWrap
               className={classes.title}
             >
+              <a href="/" type="menu">
               National Park Online Kiosk
+              </a>
             </Typography>
           </Toolbar>
         </AppBar>

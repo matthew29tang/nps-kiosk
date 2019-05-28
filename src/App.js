@@ -7,16 +7,7 @@ class App extends React.Component {
     render() {
       return (
         <div className="App">
-          {/*<NavBar />
-          <div> 
-            <Park />
-          </div>
-          
-          <Search />
-          <ParkDetails /> */}
           <NavBar />
-          <Routing>
-          </Routing>
         </div>
       );
     }

@@ -40,7 +40,7 @@ class ParkList extends React.Component {
           <h1>Parks </h1>
           {this.state ? 
             (this.state.parks ? this.state.parks.map((park, i) => 
-              (park.description ? <div className={park} key={i}>
+              (park.description ? <div className={park.parkCode} key={i}>
                 <NavLink activeClassName="active" to={"/park/" + park.parkCode}>
                   <h1>{park.fullName}</h1>
                 </NavLink>
