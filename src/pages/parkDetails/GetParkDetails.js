@@ -9,8 +9,8 @@ class GetParkDetails extends React.Component {
     this.getRequest('visitorcenters', { parkCode: this.props.parkName });
     this.getRequest('campgrounds', { parkCode: this.props.parkName });
     this.getRequest('alerts', { parkCode: this.props.parkName });
-    this.getRequest('articles', { parkCode: this.props.parkName });
-    this.getRequest('events', { parkCode: this.props.parkName });
+    this.getRequest('articles', { parkCode: this.props.parkName, limit: 10});
+    this.getRequest('events', { parkCode: this.props.parkName, limit: 10 });
     this.getRequest('newsreleases', { parkCode: this.props.parkName });
     this.getRequest('lessonplans', { parkCode: this.props.parkName });
     this.getRequest('people', { parkCode: this.props.parkName });

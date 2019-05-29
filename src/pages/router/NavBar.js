@@ -121,6 +121,7 @@ class NavBar extends React.Component {
               className={classes.title}
             >
               <a href="/" type="menu">
+                {console.log(process.env.PUBLIC_URL)}
               National Park Online Kiosk
               </a>
             </Typography>

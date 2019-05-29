@@ -32,6 +32,7 @@ class Search extends React.Component {
     return (
       <div>
         <Selector changeValue={this.onChangeName} />
+        <br/>
         {this.state.name.value ? 
         <NavLink activeClassName="active" to={"/parks/" + this.state.name.value}>
           <Button variant="contained" color="primary" className={classes.button}>
