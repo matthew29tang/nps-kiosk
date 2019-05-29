@@ -8,12 +8,6 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 
-import ParkInfo from './details/ParkInfo.js';
-import VisitorCenters from './details/VisitorCenters.js';
-import Campgrounds from './details/Campgrounds.js';
-import News from './details/News.js';
-import Education from './details/Education.js';
-
 function TabContainer({ children, dir }) {
   return (
     <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
@@ -23,12 +17,14 @@ function TabContainer({ children, dir }) {
 }
 
 TabContainer.propTypes = {
+  children: PropTypes.node.isRequired,
   dir: PropTypes.string.isRequired,
 };
 
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
+
   },
 }));
 

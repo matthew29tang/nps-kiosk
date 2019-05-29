@@ -33,7 +33,7 @@ function objToQueryString(obj) {
 class ParkList extends React.Component {
   constructor(props) {
     super(props);
-    this.getRequest('parks', { stateCode: this.props.stateCode, limit: 10, fields: ['addresses'] });
+    this.getRequest('parks', { stateCode: this.props.stateCode, limit: 25, fields: ['addresses'] });
   }
 
   updateState = (req, data) => {

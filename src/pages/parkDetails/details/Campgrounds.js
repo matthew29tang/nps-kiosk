@@ -1,7 +1,9 @@
 import React from 'react';
+
 import Divider from '@material-ui/core/Divider';
 import Card from '@material-ui/core/Card';
 import { withStyles } from '@material-ui/core/styles';
+
 import styles from './cardStyles.js';
 
 class Campgrounds extends React.Component {

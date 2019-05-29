@@ -21,7 +21,13 @@ const styles = theme => ({
   details: {
     flexDirection: "column",
     textAlign:'left',
-  }
+  },
+  button: {
+    margin: theme.spacing(2),
+  },
+  input: {
+    display: 'none',
+  },
 });
 
 export default styles;

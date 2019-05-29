@@ -1,19 +1,20 @@
 import React from "react";
+import {
+  Route,
+  HashRouter as Router,
+  Switch
+} from "react-router-dom";
+
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import {
-  Route,
-  NavLink,
-  HashRouter as Router,
-  Switch
-} from "react-router-dom";
-import Notfound from "./notfound";
 
+import Notfound from "./notfound.js";
 import ParkList from '../parkList/ParkList.js';
 import ParkDetails from '../parkDetails/ParkDetails.js';
 import Search from '../search/Search.js';
+
 const Park = ({ match }) => <ParkDetails parkName={match.params.name} />;
 const ListParks = ({ match }) => <ParkList stateCode={match.params.state} />;
 

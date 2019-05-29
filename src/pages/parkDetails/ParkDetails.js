@@ -7,7 +7,6 @@ class ParkDetails extends React.Component {
     this.setState({
       [req]: data
     });
-    console.log(req, data);
   }
 
   render() {
