@@ -1,0 +1,16 @@
+{
+  "name": "nps-kiosk-server",
+  "version": "1.0.0",
+  "description": "Backend for NPS Kiosk",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matthew Tang",
+  "license": "ISC"
+}
