@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 
 const token = 'xLzbrpcuMwDXar76GlDLcIZrzRu7Cv1KJHz7yZZX';
+const baseURL = 'https://nps-kiosk-server.herokuapp.com/';
 
 const styles = theme => ({
   card: {
@@ -33,7 +34,7 @@ function objToQueryString(obj) {
 class ParkList extends React.Component {
   constructor(props) {
     super(props);
-    this.getRequest('parks', { stateCode: this.props.stateCode, limit: 25, fields: ['addresses'] });
+    this.getRequest('parks', { stateCode: this.props.stateCode, limit: 25 });
   }
 
   updateState = (req, data) => {
@@ -44,10 +45,10 @@ class ParkList extends React.Component {
 
   getRequest = (req, params) => {
     params.api_key = token;
-    const url = `https://developer.nps.gov/api/v1/${req}?` + objToQueryString(params);
-    fetch(url).then(res => res.json())
+    const url = baseURL + `${req}?`+ objToQueryString(params);
+    fetch(url, {mode: 'cors'}).then(res => res.json())
       .then(res => {
-        this.updateState(req, res.data)
+        this.updateState(req, res.data);
       });
   }
 
@@ -66,7 +67,7 @@ class ParkList extends React.Component {
               <Card className={classes.card}>
                   <Typography className={classes.title}>
                     <NavLink activeClassName="active" className="link" to={"/park/" + park.parkCode}>
-                      <h1>{park.fullName}</h1>
+                      <h1><div dangerouslySetInnerHTML={{ __html: park.fullName }} /></h1>
                     </NavLink>
                   </Typography>
                   <p>{park.description}</p>

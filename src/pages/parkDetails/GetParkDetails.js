@@ -5,11 +5,11 @@ const token = 'xLzbrpcuMwDXar76GlDLcIZrzRu7Cv1KJHz7yZZX';
 class GetParkDetails extends React.Component {
   constructor(props) {
     super(props);
-    this.getRequest('parks', { parkCode: this.props.parkName, fields : ['addresses', 'images']});
+    this.getRequest('parks', { parkCode: this.props.parkName, fields: ['addresses', 'images'] });
     this.getRequest('visitorcenters', { parkCode: this.props.parkName });
     this.getRequest('campgrounds', { parkCode: this.props.parkName });
     this.getRequest('alerts', { parkCode: this.props.parkName });
-    this.getRequest('articles', { parkCode: this.props.parkName, limit: 10});
+    this.getRequest('articles', { parkCode: this.props.parkName, limit: 10 });
     this.getRequest('events', { parkCode: this.props.parkName, limit: 10 });
     this.getRequest('newsreleases', { parkCode: this.props.parkName });
     this.getRequest('lessonplans', { parkCode: this.props.parkName });
@@ -28,7 +28,9 @@ class GetParkDetails extends React.Component {
   getRequest = (req, params) => {
     params.api_key = token;
     const url = `https://developer.nps.gov/api/v1/${req}?` + this.objToQueryString(params);
-    fetch(url).then(res => res.json())
+    fetch(url, {
+      mode: 'cors',
+    }).then(res => res.json())
       .then(res => {
         this.props.updateState(req, res.data)
       });

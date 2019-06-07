@@ -3,8 +3,10 @@ import { NavLink } from "react-router-dom";
 
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
 
 import Selector from './Selector.js';
+import ParkSearch from './ParkSearch.js';
 
 const styles = theme => ({
   button: {
@@ -27,12 +29,23 @@ class Search extends React.Component {
     super();
     this.state = {
       name: {
-        value: ''
-      }
+        value: '',
+      },
+      parkCode: {
+        value: '',
+      },
+      allParks: {}
     }
+    fetch('https://nps-kiosk-server.herokuapp.com/allParks').then(res => res.json()).then(res => this.setState({
+      allParks: res.sort((a, b) => a.label.localeCompare(b.label))
+    }))
   }
   onChangeName = (name) => {
     this.setState({ name });
+  }
+
+  onChangePark = (park) => {
+    this.setState({ parkCode: park })
   }
 
   render() {
@@ -42,11 +55,13 @@ class Search extends React.Component {
       <div>
         <div className={classes.homeImage}>
           <img
-            src="https://www.nps.gov/common/uploads/hero_home/pwr/promo/1E007390-CB77-7564-C14C2B8B692B1075.jpg?width=2400&height=700&mode=crop&quality=90" 
+            src="https://www.nps.gov/common/uploads/hero_home/pwr/promo/1E007390-CB77-7564-C14C2B8B692B1075.jpg?width=2400&height=700&mode=crop&quality=90"
             width="100%"
-            alt=""/>
+            alt="" />
         </div>
-        <br/>
+        <br />
+        National Parks are the gems of the United States. Learn more about any of the U.S. national parks by entering a state or park name.
+        <br /><br /><Divider /><br />
         <div className={classes.homeText}> Find a Park </div>
         <Selector changeValue={this.onChangeName} />
         <br />
@@ -57,7 +72,15 @@ class Search extends React.Component {
           </Button>
           </NavLink>
           : ""}
-
+        <ParkSearch changeValue={this.onChangePark} suggestions={this.state.allParks} />
+        <br />
+        {this.state.parkCode.value ?
+          <NavLink activeClassName="active" to={"/park/" + this.state.parkCode.value}>
+            <Button variant="contained" color="primary" className={classes.button}>
+              Search
+          </Button>
+          </NavLink>
+          : ""}
       </div>
     )
   }

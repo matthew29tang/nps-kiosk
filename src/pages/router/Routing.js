@@ -14,6 +14,7 @@ import Notfound from "./notfound.js";
 import ParkList from '../parkList/ParkList.js';
 import ParkDetails from '../parkDetails/ParkDetails.js';
 import Search from '../search/Search.js';
+import About from "../About.js";
 
 const Park = ({ match }) => <ParkDetails parkName={match.params.name} />;
 const ListParks = ({ match }) => <ParkList stateCode={match.params.state} />;
@@ -31,6 +32,7 @@ const routing = (
         <Route exact path="/" component={Search} />
         <Route path="/parks/:state" component={ListParks} />
         <Route path="/park/:name" component={Park} />
+        <Route path="/about/" component={About} />
         <Route component={Notfound} />
       </Switch>
     </div>
