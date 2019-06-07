@@ -1,68 +1,80 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## National Park Online Kiosk
 
-## Available Scripts
+This project was created for the National Park MindSumo project. More details can be found [here](https://www.mindsumo.com/contests/national-park-api). The goal was to provide a clean, sleek interface for the user to access information about national parks. 
 
-In the project directory, you can run:
+### Features
+* Search by state (with autocomplete, full list of states)
+* Search by park name (with autocomplete, full list of parks) [Uses custom backend server]
+* Park information
+* Nearby visitor centers and campgrounds
+* Articles/events/news
+* Educational resources about the park. 
 
-### `npm start`
+### Technologies used
+* Frontend: ReactJS
+    * Theme: Material UI
+    * Deployment: Github pages
+* Backend: NodeJS
+    * Deployment: Heroku (nps-kiosk-server.herokuapp.com)
+    
+I created a backend server which provides a smaller JSON payload to reduce park listing delays.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Backend Endpoints
+Server accepts only GET requests.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### parks
+Returns a list of parks in a state
+###### Endpoint
+```
+http://nps-kiosk-server.herokuapp.com/parks?stateCode={stateCode}
+```
+###### Parameters
+- **<code>string</code> stateCode** — 2 letter state abbreviation
 
-### `npm test`
+###### Return Format
+- **<code>JSON</code> data** — See example below.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###### Example Result
+```
+{
+  "data": [
+    {
+      "description": "Alcatraz Island offers a close-up look at the site of the first lighthouse and US built fort on the West Coast, the infamous federal penitentiary long off-limits to the public, and the history making 18 month occupation by Indians of All Tribes. Rich in history, there is also a natural side to the Rock—gardens, tide pools, bird colonies, and bay views beyond compare.",
+      "parkCode": "alca",
+      "fullName": "Alcatraz Island",
+      "stateCode": "CA"
+    },
+    {
+      "description": "Climbing out of his boat and onto shore in 1542, Juan Rodriguez Cabrillo stepped into history as the first European to set foot on what is now the West Coast of the United States. In addition to telling the story of 16th century exploration, the park is home to a wealth of cultural and natural resources. Join us and embark on your own Voyage of Discovery.",
+      "parkCode": "cabr",
+      "fullName": "Cabrillo National Monument",
+      "stateCode": "CA"
+    }]}
+```
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### allParks
+Returns a list of all parks, total
+###### Endpoint
+```
+http://nps-kiosk-server.herokuapp.com/allParks
+```
+###### Parameters
+- **None**
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+###### Return Format
+- **<code>Array<JSON></code> data** — See example below.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+###### Example Result
+```
+[
+  {
+    "label": "Captain John Smith Chesapeake National Historic Trail (DE)",
+    "value": "cajo"
+  },
+  {
+    "label": "Chesapeake Bay (DE)",
+    "value": "cbpo"
+  }]
+```
