@@ -33,6 +33,9 @@ function getRequest(callback, url, stateCode){
     if (!error && response.statusCode == 200) {
       console.log("Received " + stateCode);
       callback(formatParks(body, stateCode), stateCode);
+    } else {
+      console.log("Too many requests... Retrying");
+      getRequest(callback, url, stateCode);
     }
   });
 }
@@ -74,6 +77,20 @@ app.get('/allParks', function(req, res) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   res.send(allParks);
+});
+
+app.get('/status', function(req, res) {
+  console.log("Displaying status");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  var status = true;
+  states.map(state => {
+    if (!data.parks[state]) {
+      status = false;
+      console.log("Missing " + state);
+    }
+  })
+  res.send(status);
 });
 
 app.listen(port, function() {}); //starts the server, alternatively you can use app.listen(port)

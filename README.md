@@ -78,3 +78,17 @@ http://nps-kiosk-server.herokuapp.com/allParks
     "value": "cbpo"
   }]
 ```
+
+---
+
+### status
+Returns status of the progress of the async requests of the backend server upon startup
+###### Endpoint
+```
+http://nps-kiosk-server.herokuapp.com/status
+```
+###### Parameters
+- **None**
+
+###### Return Format
+- **<code>Boolean</code> isOnline** 

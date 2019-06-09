@@ -34,11 +34,15 @@ class Search extends React.Component {
       parkCode: {
         value: '',
       },
-      allParks: {}
+      allParks: {},
+      status: false
     }
     fetch('https://nps-kiosk-server.herokuapp.com/allParks').then(res => res.json()).then(res => this.setState({
       allParks: res.sort((a, b) => a.label.localeCompare(b.label))
-    }))
+    }));
+    fetch('https://nps-kiosk-server.herokuapp.com/status').then(res => res.json()).then(res => this.setState({
+      status: res
+    }));
   }
   onChangeName = (name) => {
     this.setState({ name });
@@ -59,12 +63,12 @@ class Search extends React.Component {
             width="100%"
             alt="" />
         </div>
-        <br />
+        <br/>
         National Parks are the gems of the United States. Learn more about any of the U.S. national parks by entering a state or park name.
-        <br /><br /><Divider /><br />
+        <br/><br/><Divider /><br/>
         <div className={classes.homeText}> Find a Park </div>
         <Selector changeValue={this.onChangeName} />
-        <br />
+        <br/>
         {this.state.name.value ?
           <NavLink activeClassName="active" to={"/parks/" + this.state.name.value}>
             <Button variant="contained" color="primary" className={classes.button}>
@@ -73,7 +77,7 @@ class Search extends React.Component {
           </NavLink>
           : ""}
         <ParkSearch changeValue={this.onChangePark} suggestions={this.state.allParks} />
-        <br />
+        <br/>
         {this.state.parkCode.value ?
           <NavLink activeClassName="active" to={"/park/" + this.state.parkCode.value}>
             <Button variant="contained" color="primary" className={classes.button}>
@@ -81,6 +85,8 @@ class Search extends React.Component {
           </Button>
           </NavLink>
           : ""}
+        <br/>
+        Backend server status: {this.state.status ? "online" : "offline. Please wait 1-2mins and refresh while server boots up."}
       </div>
     )
   }
