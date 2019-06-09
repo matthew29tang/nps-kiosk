@@ -11,6 +11,14 @@ data.parks = {};
 var allParks = [];
 
 console.log("Starting up server... Making requests");
+
+//Ping server every 10mins to prevent Heroku from idling
+var https = require("https");
+setInterval(function() {
+    https.get("https://nps-kiosk-server.herokuapp.com/status");
+	console.log("Ping!");
+}, 600000);
+
 function objToQueryString(obj){
   const keyValuePairs = [];
   for (const key in obj) {

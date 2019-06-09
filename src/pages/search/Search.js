@@ -64,7 +64,7 @@ class Search extends React.Component {
             alt="" />
         </div>
         <br/>
-        National Parks are the gems of the United States. Learn more about any of the U.S. national parks by entering a state or park name.
+        National Parks are the gems of the United States. Learn more about any of the U.S. national parks by entering a state or park name. 
         <br/><br/><Divider /><br/>
         <div className={classes.homeText}> Find a Park </div>
         <Selector changeValue={this.onChangeName} />
@@ -86,7 +86,9 @@ class Search extends React.Component {
           </NavLink>
           : ""}
         <br/>
-        Backend server status: {this.state.status ? "online" : "offline. Please wait 1-2mins and refresh while server boots up."}
+        Please note that some parks do not contain all features.
+        <br/><br/>
+        Heroku backend server status: {this.state.status ? "online" : "offline. Please wait 1-2mins and refresh while the Heroku server boots up."}
       </div>
     )
   }
