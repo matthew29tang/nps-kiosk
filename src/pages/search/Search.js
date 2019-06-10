@@ -86,7 +86,7 @@ class Search extends React.Component {
           </NavLink>
           : ""}
         <br/>
-        Please note that some parks do not contain all features.
+        Please note that feature tabs available for each prak varies based on information provided by the official NPS API.
         <br/><br/>
         Heroku backend server status: {this.state.status ? "online" : "offline. Please wait 1-2mins and refresh while the Heroku server boots up."}
       </div>
