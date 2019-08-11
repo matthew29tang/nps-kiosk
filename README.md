@@ -1,6 +1,10 @@
+<p align="center">
+    <img src="https://cdn.worldvectorlogo.com/logos/capital-one-2.svg" width="150">
+</p>
+
 # National Park Online Kiosk
 
-This project was created for the National Park MindSumo project. More details can be found [here](https://www.mindsumo.com/contests/national-park-api). The goal was to provide a clean, sleek interface for the user to access information about national parks. 
+This project is my winning submission for the Capital One Software Engineering Summit August 2019 coding challenge. More details about the specifications can be found [here](https://www.mindsumo.com/contests/national-park-api). The goal was to provide a clean, sleek interface for the user to access information about national parks. 
 
 ## Features
 * Search by state (with autocomplete, full list of states)
@@ -14,7 +18,7 @@ This project was created for the National Park MindSumo project. More details ca
 * Frontend: ReactJS
     * Theme: Material UI
     * Deployment: Github pages
-* Backend: NodeJS
+* Backend: Node.js express server
     * Deployment: Heroku (nps-kiosk-server.herokuapp.com)
     
 I created a backend server which provides a smaller JSON payload to reduce park listing delays.
